@@ -174,8 +174,8 @@ class _ContractGeneration {
 
   void _methodForFunction(ContractFunction fun, MethodBuilder b, int index) {
     b
-      ..modifier = MethodModifier.async
-      ..returns = fun.isConstant ? _returnType(fun) : refer('Transaction')
+      ..modifier = fun.isConstant ? MethodModifier.async : null
+      ..returns = fun.isConstant ? _returnType(fun) : refer('_i1.Transaction')
       ..name = _nameOfFunction(fun)
       ..body = fun.isConstant ? _bodyForImmutable(fun, index) : _bodyForMutable(fun, index)
       ..requiredParameters.addAll(_parametersFor(fun));
