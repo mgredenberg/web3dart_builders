@@ -175,7 +175,7 @@ class _ContractGeneration {
   void _methodForFunction(ContractFunction fun, MethodBuilder b, int index) {
     b
       ..modifier = MethodModifier.async
-      ..returns = _returnType(fun)
+      ..returns = fun.isConstant ? refer('transaction') : _returnType(fun)
       ..name = _nameOfFunction(fun)
       ..body = fun.isConstant ? _bodyForImmutable(fun, index) : _bodyForMutable(fun, index)
       ..requiredParameters.addAll(_parametersFor(fun));
@@ -185,7 +185,7 @@ class _ContractGeneration {
         ..type = credentials
         ..name = 'credentials'
         ..named = true
-        ..required = true));
+        ..required = false));
     }
 
     if (fun.isConstant) {
