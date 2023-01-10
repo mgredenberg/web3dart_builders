@@ -182,8 +182,8 @@ class _ContractGeneration {
 
     if (!fun.isConstant) {
       b.optionalParameters.add(Parameter((b) => b
-        ..type = credentials
-        ..name = '_i1.Credentials?'
+        ..type = referType('_i1.Credentials?')
+        ..name = 'credentials'
         ..named = true
         ..required = false));
     }
